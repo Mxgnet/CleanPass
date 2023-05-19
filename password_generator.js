@@ -1,60 +1,48 @@
-// Add an event listener to the "Generate Password" button. When clicked, it triggers the generatePassword function.
 document.getElementById('generate-btn').addEventListener('click', generatePassword);
-
-// Similarly, when the input for the number of segments changes, it also triggers the generatePassword function.
-document.getElementById('num-segments').addEventListener('input', generatePassword);
-
-// Add an event listener to the "Copy to Clipboard" button. When clicked, it triggers the copyToClipboard function.
 document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
 
-// This function generates a single password segment, consisting of a capital letter, a vowel, and two lowercase letters.
+// This function generates a single password segment, which consists of a capital letter, a vowel, and two lowercase letters.
 function generatePasswordSegment() {
     // Generate a random uppercase letter.
     let firstLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-    
+
     // Randomly select a vowel.
     let vowel = 'aeiou'[Math.floor(Math.random() * 5)];
 
     // Generate two random lowercase letters.
-    let rest = '';
-    for (let i = 0; i < 2; i++) {
-        rest += 'abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random() * 26)];
-    }
-    // Return the concatenation of the uppercase letter, vowel, and two lowercase letters.
-    return firstLetter + vowel + rest;
+    let thirdLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    let fourthLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+
+    // Concatenate the letters to form the password segment.
+    return firstLetter + vowel + thirdLetter + fourthLetter;
 }
 
-// This function generates the entire password, consisting of a specified number of segments and possibly including special characters.
+// This function generates a password, which may consist of multiple segments.
 function generatePassword() {
-    // Get the number of segments from the input element.
-    let numSegments = document.getElementById('num-segments').value;
+    // Get the selected number of segments from the radio buttons.
+    let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
 
-    // Check if the user wants to include special characters.
+    // Determine whether to include special characters between segments.
     let specialCharacters = document.getElementById('special-characters').checked;
 
-    // Validate the input: it should be a number between 1 and 3.
-    if (numSegments < 1 || numSegments > 3) {
-        alert("Number of segments should be between 1 and 3.");
-        return;
-    }
-    // Initialize an empty string to build the password.
+    // Initialize an empty string to hold the password.
     let password = '';
 
-    // Generate each segment.
+    // Generate the required number of password segments.
     for (let i = 0; i < numSegments; i++) {
         password += generatePasswordSegment();
 
-        // If special characters are to be included, add a random special character after each segment except the last one.
+        // If the specialCharacters checkbox is checked and we're not on the last segment, add a random special character to the password.
         if (specialCharacters && i < numSegments - 1) {
             password += '!@#$'[Math.floor(Math.random() * 4)];
         }
     }
-    // Get the password display element
-    let passwordDisplay = document.getElementById('password-display');
+
     // Display the generated password on the webpage.
+    let passwordDisplay = document.getElementById('password-display');
     passwordDisplay.innerText = password;
-    
-    // Add a brief animation to make the transition more visually pleasing.
+
+    // Add an animation to draw the user's attention to the new password.
     passwordDisplay.style.opacity = "0";
     setTimeout(function() {
         passwordDisplay.style.opacity = "1";
@@ -66,11 +54,10 @@ function copyToClipboard() {
     // Get the generated password from the webpage.
     let password = document.getElementById('password-display').innerText;
     
-    // Get the Copy to Clipboard button
-    let copyButton = document.getElementById('copy-btn');
-
     // Use the Clipboard API to write the password to the clipboard.
     navigator.clipboard.writeText(password).then(function() {
+        // Get the Copy to Clipboard button
+        let copyButton = document.getElementById('copy-btn');
         // If the write operation is successful, change the button text to indicate success.
         copyButton.innerText = 'Copied!';
         
@@ -88,8 +75,4 @@ function copyToClipboard() {
         // If the write operation fails, display an error message.
         console.error('Could not copy password: ', err);
     });
-
-    // Select the password text when the user clicks the "Copy to Clipboard" button.
-    window.getSelection().selectAllChildren(document.getElementById('password-display'));
 }
-
