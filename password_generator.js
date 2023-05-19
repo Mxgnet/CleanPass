@@ -49,23 +49,47 @@ function generatePassword() {
             password += '!@#$'[Math.floor(Math.random() * 4)];
         }
     }
+    // Get the password display element
+    let passwordDisplay = document.getElementById('password-display');
     // Display the generated password on the webpage.
-    document.getElementById('password-display').innerText = password;
+    passwordDisplay.innerText = password;
+    
+    // Add a brief animation to make the transition more visually pleasing.
+    passwordDisplay.style.opacity = "0";
+    setTimeout(function() {
+        passwordDisplay.style.opacity = "1";
+    }, 100);
 }
 
 // This function copies the generated password to the clipboard.
 function copyToClipboard() {
     // Get the generated password from the webpage.
     let password = document.getElementById('password-display').innerText;
+    
+    // Get the Copy to Clipboard button
+    let copyButton = document.getElementById('copy-btn');
 
     // Use the Clipboard API to write the password to the clipboard.
-    // navigator.clipboard.writeText returns a promise that is resolved when the write operation is successful,
-    // and rejected if it fails for any reason.
     navigator.clipboard.writeText(password).then(function() {
-        // If the write operation is successful, display a success message.
-        alert('Password copied to clipboard!');
+        // If the write operation is successful, change the button text to indicate success.
+        copyButton.innerText = 'Copied!';
+        
+        // Reset the button text after 1.5 seconds.
+        setTimeout(function() {
+            copyButton.innerText = 'Copy to Clipboard';
+        }, 1500);
+        
+        // Add a brief animation to make the transition more visually pleasing.
+        copyButton.style.backgroundColor = "#28a745"; // Change the button color to green when copied
+        setTimeout(function() {
+            copyButton.style.backgroundColor = "#007bff"; // Reset the color after 1.5 seconds
+        }, 1500);
     }, function(err) {
         // If the write operation fails, display an error message.
-        alert('Could not copy password: ', err);
+        console.error('Could not copy password: ', err);
     });
+
+    // Select the password text when the user clicks the "Copy to Clipboard" button.
+    window.getSelection().selectAllChildren(document.getElementById('password-display'));
 }
+
