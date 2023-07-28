@@ -1,35 +1,34 @@
-// Attach event listeners to buttons
+// Grab button elements from the DOM
 document.getElementById('generate-btn').addEventListener('click', generatePassword);
 document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
 
 // Function to generate a random character from a given string
-function randomCharacter(str) {
-    return str[Math.floor(Math.random() * str.length)];
+function randomCharacter(characters) {
+    return characters[Math.floor(Math.random() * characters.length)];
 }
 
-// Function to generate a random password segment
+// Function to generate a single segment of the password
 function generatePasswordSegment(includeNumbers) {
-    let firstLetter = randomCharacter('BCDEFGHJKMNPQRSTVWXYZ');  // Exclude confusing letters
-    let vowel = randomCharacter('AEIOU');
-    let thirdLetter = randomCharacter('bcdfghjkmnpqrstvwxyz');  // Exclude confusing letters and vowels
+    let firstCharacter = randomCharacter('ABCDEFGHJKMNPQRSTUVWXYZ'); // Removed confusing letters
+    let secondCharacter = randomCharacter('aeiou');
+    let thirdCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz'); // Ensuring the third character is not a vowel
     let fourthCharacter;
     if (includeNumbers) {
-        // Select a random even number from [2, 4, 6, 8]
-        fourthCharacter = [2, 4, 6, 8][Math.floor(Math.random() * 4)];
+        fourthCharacter = [2, 4, 6, 8][Math.floor(Math.random() * 4)].toString(); // Even number when numbers are enabled
     } else {
-        fourthCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz');  // Exclude confusing letters
+        fourthCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz');
     }
-    return firstLetter + vowel + thirdLetter + fourthCharacter;
+    return firstCharacter + secondCharacter + thirdCharacter + fourthCharacter;
 }
 
-// Function to generate a complete password
+// Function to generate the full password
 function generatePassword() {
     let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
     let specialCharacters = document.getElementById('special-characters').checked;
     let includeNumbers = document.getElementById('include-numbers').checked;
     let password = '';
     for (let i = 0; i < numSegments; i++) {
-        password += generatePasswordSegment(includeNumbers);  // Include 'includeNumbers' parameter
+        password += generatePasswordSegment(includeNumbers);
         if (specialCharacters && i < numSegments - 1) {
             password += '@#'[Math.floor(Math.random() * 2)];
         }
@@ -42,6 +41,7 @@ function generatePassword() {
     }, 100);
 }
 
+// Function to copy the generated password to the clipboard
 function copyToClipboard() {
     let password = document.getElementById('password-display').innerText;
     navigator.clipboard.writeText(password).then(function() {
@@ -56,6 +56,5 @@ function copyToClipboard() {
         }, 1500);
     }, function(err) {
         console.error('Could not copy password: ', err);
-    });  // removed trailing comma here
+    });
 }
-
