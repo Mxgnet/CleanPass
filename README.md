@@ -1,7 +1,9 @@
 Generates a certain format of passwords that I find to be easy to remember and clean to read:
 
 Segment = String of 4 letters, first letter is capital, 3rd letter is consonant, no I,i,l,L.
+
 'Include Numbers': Swaps last character of a segment to a number 1-9
+
 'Include Symbols': Adds '@' or '#' between segments
 
 
