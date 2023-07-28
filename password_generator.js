@@ -1,20 +1,21 @@
 document.getElementById('generate-btn').addEventListener('click', generatePassword);
 document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
 
-function generatePasswordSegment() {
+function generatePasswordSegment(includeNumbers) {
     let firstLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
     let vowel = 'aeiou'[Math.floor(Math.random() * 5)];
     let thirdLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-    let fourthLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    let fourthLetter = includeNumbers ? Math.floor(Math.random() * 10).toString() : String.fromCharCode(Math.floor(Math.random() * 26) + 97);
     return firstLetter + vowel + thirdLetter + fourthLetter;
 }
 
 function generatePassword() {
     let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
     let specialCharacters = document.getElementById('special-characters').checked;
+    let includeNumbers = document.getElementById('include-numbers').checked;
     let password = '';
     for (let i = 0; i < numSegments; i++) {
-        password += generatePasswordSegment();
+        password += generatePasswordSegment(includeNumbers);
         if (specialCharacters && i < numSegments - 1) {
             password += '@#'[Math.floor(Math.random() * 2)];
         }
