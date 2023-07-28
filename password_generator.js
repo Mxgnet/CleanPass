@@ -25,28 +25,23 @@ function generatePasswordSegment(includeNumbers) {
 
 // A function that generates the whole password.
 function generatePassword() {
-    // Retrieving the user's choice for the number of segments.
     let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
-
-    // Checking if the user wants to include special characters between segments.
     let specialCharacters = document.getElementById('special-characters').checked;
-
-    // Checking if the user wants to include numbers in the segments.
     let includeNumbers = document.getElementById('include-numbers').checked;
-
-    // Initializing an empty string for the password.
     let password = '';
-
-    // Looping through the desired number of segments.
     for (let i = 0; i < numSegments; i++) {
-        // Adding a new segment to the password.
-        password += generatePasswordSegment(includeNumbers);
-
-        // If special characters are enabled and this isn't the last segment, add a special character after the segment.
+        password += generatePasswordSegment(includeNumbers);  // Include 'includeNumbers' parameter
         if (specialCharacters && i < numSegments - 1) {
             password += '@#'[Math.floor(Math.random() * 2)];
         }
     }
+    let passwordDisplay = document.getElementById('password-display');
+    passwordDisplay.innerText = password;
+    passwordDisplay.style.opacity = "0";
+    setTimeout(function() {
+        passwordDisplay.style.opacity = "1";
+    }, 100);
+}
 
     // Grabbing the password display element.
     let passwordDisplay = document.getElementById('password-display');
