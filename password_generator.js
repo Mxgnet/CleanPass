@@ -42,7 +42,6 @@ function generatePassword() {
     }, 100);
 }
 
-// Function to copy the generated password to clipboard
 function copyToClipboard() {
     let password = document.getElementById('password-display').innerText;
     navigator.clipboard.writeText(password).then(function() {
@@ -57,5 +56,6 @@ function copyToClipboard() {
         }, 1500);
     }, function(err) {
         console.error('Could not copy password: ', err);
-    });
+    });  // removed trailing comma here
 }
+
