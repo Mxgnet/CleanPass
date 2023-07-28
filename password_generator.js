@@ -23,25 +23,22 @@ function generatePasswordSegment(includeNumbers) {
     return firstLetter + vowel.toLowerCase() + thirdLetter + fourthLetter;
 }
 
-// A function that generates the whole password.
-function generatePassword() {
-    let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
-    let specialCharacters = document.getElementById('special-characters').checked;
-    let includeNumbers = document.getElementById('include-numbers').checked;
-    let password = '';
-    for (let i = 0; i < numSegments; i++) {
-        password += generatePasswordSegment(includeNumbers);  // Include 'includeNumbers' parameter
-        if (specialCharacters && i < numSegments - 1) {
-            password += '@#'[Math.floor(Math.random() * 2)];
-        }
+
+// Generates a random password segment
+function generatePasswordSegment(includeNumbers) {
+    let firstLetter = randomCharacter('BCDEFGHJKMNPQRSTVWXYZ');  // Exclude confusing letters
+    let vowel = randomCharacter('AEIOU');
+    let thirdLetter = randomCharacter('bcdfghjkmnpqrstvwxyz');  // Exclude confusing letters and vowels
+    let fourthCharacter;
+    if (includeNumbers) {
+        // Select a random even number from [2, 4, 6, 8]
+        fourthCharacter = [2, 4, 6, 8][Math.floor(Math.random() * 4)];
+    } else {
+        fourthCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz');  // Exclude confusing letters
     }
-    let passwordDisplay = document.getElementById('password-display');
-    passwordDisplay.innerText = password;
-    passwordDisplay.style.opacity = "0";
-    setTimeout(function() {
-        passwordDisplay.style.opacity = "1";
-    }, 100);
+    return firstLetter + vowel + thirdLetter + fourthCharacter;
 }
+
 
     // Grabbing the password display element.
     let passwordDisplay = document.getElementById('password-display');
