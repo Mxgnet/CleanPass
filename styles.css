@@ -1,3 +1,4 @@
+/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,8 +7,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light theme background */
+    color: #000000; /* Light theme text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition between themes */
 }
+
+body.dark-mode {
+    background-color: #121212; /* Dark theme background */
+    color: #ffffff; /* Dark theme text color */
+}
+
 .container {
     padding: 20px;
     background-color: #ffffff;
@@ -15,16 +24,68 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background-color 0.3s; /* Smooth transition between themes */
 }
+
+body.dark-mode .container {
+    background-color: #333333; /* Dark theme container background */
+    box-shadow: none; /* Remove shadow in dark mode */
+}
+
+/* Theme Switcher Styling */
+.theme-switch {
+    margin-bottom: 20px;
+}
+
+.theme-switch label {
+    margin-right: 10px;
+}
+
+.theme-switch input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background-color: #ccc;
+    outline: none;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-switch input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+}
+
+.theme-switch input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: 0.3s ease;
+}
+
+.theme-switch input[type="checkbox"]:checked::before {
+    transform: translateX(20px);
+}
+
+/* Labels */
 label {
     margin: 10px 0;
 }
+
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
     margin-left: 10px;
     vertical-align: middle;
 }
+
+/* Paragraph for Displaying Password */
 p {
     margin: 20px 0;
     padding: 10px;
@@ -32,33 +93,76 @@ p {
     width: 100%;
     text-align: center;
 }
+
+/* Button Group */
 .btn-group {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
+
+/* Button Styles */
 button {
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background-color: #4CAF50; /* Flat green color */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Softer corners */
     cursor: pointer;
-    flex-grow: 1;
-    margin: 0 10px;
-    transition: background-color 0.3s ease;
     width: 45%;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
 button:active, button:focus {
-    background-color: #0056b3;
+    background-color: #388e3c; /* Darker when pressed */
     outline: none;
 }
+
+/* Segment Options */
 .num-segments {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
+
 .num-segments input[type="radio"] {
     margin: 0 10px;
+}
+
+/* Responsive Typography and Layout */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 90%; /* Full-width for tablets */
+    }
+
+    .btn-group {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        width: 100%;
+    }
 }

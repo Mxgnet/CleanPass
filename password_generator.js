@@ -1,3 +1,9 @@
+
+// Event Listener for Dark Mode Toggle
+document.getElementById('theme-toggle').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+});
+
 // Once all DOM content is loaded, run the following code:
 document.addEventListener('DOMContentLoaded', function() {
 

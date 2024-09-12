@@ -6,6 +6,13 @@
 </head>
 <body>
     <div class="container">
+        <!-- Theme Switcher -->
+        <div class="theme-switch">
+            <label for="theme-toggle">Dark Mode:</label>
+            <input type="checkbox" id="theme-toggle">
+        </div>
+
+        <!-- Password Generator Options -->
         <label>Number of segments:</label>
         <div class="num-segments">
             <label>
@@ -21,13 +28,18 @@
         <label for="include-numbers">Include numbers in password:
             <input type="checkbox" id="include-numbers" checked>
         </label>
+
+        <!-- Buttons -->
         <div class="btn-group">
             <button id="generate-btn">Generate Password</button>
             <button id="copy-btn">Copy to Clipboard</button>
         </div>
+
+        <!-- Password Display -->
         <p id="password-display">Your password will be displayed here</p>
     </div>
 
     <script src="password_generator.js"></script>
 </body>
 </html>
+
