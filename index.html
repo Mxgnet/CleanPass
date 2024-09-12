@@ -14,9 +14,13 @@
 
         <!-- Password Generator Options -->
         <label>Number of segments:</label>
-        <div class="segment-selector">
-            <button class="segment-option" data-segments="2">2 Segments</button>
-            <button class="segment-option active" data-segments="3">3 Segments</button>
+        <div class="num-segments">
+            <label>
+                <input type="radio" name="num-segments" value="2"> 2
+            </label>
+            <label>
+                <input type="radio" name="num-segments" value="3" checked> 3
+            </label>
         </div>
         <label for="special-characters">Include special characters between segments:
             <input type="checkbox" id="special-characters" checked>
@@ -38,3 +42,4 @@
     <script src="password_generator.js"></script>
 </body>
 </html>
+

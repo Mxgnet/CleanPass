@@ -1,79 +1,70 @@
-// Theme toggle functionality
+
+// Event Listener for Dark Mode Toggle
 document.getElementById('theme-toggle').addEventListener('change', function() {
     document.body.classList.toggle('dark-mode');
 });
 
-// Segment selection logic
-const segmentButtons = document.querySelectorAll('.segment-option');
+// Once all DOM content is loaded, run the following code:
+document.addEventListener('DOMContentLoaded', function() {
 
-segmentButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Remove active class from all buttons
-        segmentButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to the clicked button
-        this.classList.add('active');
-        
-        // Store the selected number of segments
-        const numSegments = this.getAttribute('data-segments');
-        console.log(`Selected number of segments: ${numSegments}`);
-    });
-});
+    document.getElementById('generate-btn').addEventListener('click', generatePassword);
+    document.getElementById('copy-btn').addEventListener('click', copyToClipboard);
 
-// Password generation logic
-function generatePassword() {
-    const numSegments = document.querySelector('.segment-option.active').getAttribute('data-segments');
-    const includeNumbers = document.getElementById('include-numbers').checked;
-    const includeSpecialChars = document.getElementById('special-characters').checked;
-
-    const segmentLength = 4; // You can adjust the segment length
-    const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    const specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
-
-    let characters = alphabet;
-    if (includeNumbers) {
-        characters += numbers;
+    function randomCharacter(characters) {
+        return characters[Math.floor(Math.random() * characters.length)];
     }
 
-    let password = '';
-    for (let i = 0; i < numSegments; i++) {
-        let segment = '';
-        for (let j = 0; j < segmentLength; j++) {
-            segment += characters.charAt(Math.floor(Math.random() * characters.length));
+    function generatePasswordSegment(includeNumbers) {
+        let firstCharacter = randomCharacter('ABCDEFGHJKMNPQRSTUVWXYZ');
+        let secondCharacter = randomCharacter('aeiou');
+        let thirdCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz');
+        let fourthCharacter;
+
+        if (includeNumbers) {
+            fourthCharacter = [2, 4, 6, 8][Math.floor(Math.random() * 4)].toString();
+        } else {
+            fourthCharacter = randomCharacter('bcdfghjkmnpqrstvwxyz');
         }
-        password += segment;
-        if (includeSpecialChars && i < numSegments - 1) {
-            password += specialChars.charAt(Math.floor(Math.random() * specialChars.length));
-        }
+
+        return firstCharacter + secondCharacter + thirdCharacter + fourthCharacter;
     }
 
-    // Display the generated password
-    document.getElementById('password-display').textContent = password;
-}
+    function generatePassword() {
+        let numSegments = document.querySelector('input[name="num-segments"]:checked').value;
+        let specialCharacters = document.getElementById('special-characters').checked;
+        let includeNumbers = document.getElementById('include-numbers').checked;
+        let password = '';
 
-// Event listener for the "Generate Password" button
-document.getElementById('generate-btn').addEventListener('click', generatePassword);
+        for (let i = 0; i < numSegments; i++) {
+            password += generatePasswordSegment(includeNumbers);
+            if (specialCharacters && i < numSegments - 1) {
+                password += '@#'[Math.floor(Math.random() * 2)];
+            }
+        }
 
-// Copy to clipboard functionality
-document.getElementById('copy-btn').addEventListener('click', function() {
-    const passwordDisplay = document.getElementById('password-display').textContent;
-    
-    if (passwordDisplay) {
-        // Copy password to clipboard
-        navigator.clipboard.writeText(passwordDisplay).then(() => {
-            // Show success message
-            const successMessage = document.getElementById('copy-success');
-            successMessage.classList.remove('hidden');
-            successMessage.classList.add('visible');
+        let passwordDisplay = document.getElementById('password-display');
+        passwordDisplay.innerText = password;
+        passwordDisplay.style.opacity = "0";
+        setTimeout(function() {
+            passwordDisplay.style.opacity = "1";
+        }, 100);
+    }
 
-            // Hide success message after 2 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('visible');
-                successMessage.classList.add('hidden');
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy password: ', err);
+    function copyToClipboard() {
+        let password = document.getElementById('password-display').innerText;
+        navigator.clipboard.writeText(password).then(function() {
+            let copyButton = document.getElementById('copy-btn');
+            copyButton.innerText = 'Copied!';
+            setTimeout(function() {
+                copyButton.innerText = 'Copy to Clipboard';
+            }, 1500);
+            copyButton.style.backgroundColor = "#28a745";
+            setTimeout(function() {
+                copyButton.style.backgroundColor = "#007bff";
+            }, 1500);
+        }, function(err) {
+            console.error('Could not copy password: ', err);
         });
     }
-});
+
+}); // End of DOMContentLoaded event listener
