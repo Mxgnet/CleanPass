@@ -24,15 +24,16 @@ body.dark-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: background-color 0.3s; /* Smooth transition between themes */
+    transition: background-color 0.3s;
+    border-radius: 20px; /* Rounded outer corners */
+    width: 600px; /* Increase the horizontal width */
 }
 
 body.dark-mode .container {
     background-color: #333333; /* Dark theme container background */
-    box-shadow: none; /* Remove shadow in dark mode */
+    box-shadow: none;
 }
 
-/* Theme Switcher Styling */
 .theme-switch {
     margin-bottom: 20px;
 }
@@ -73,7 +74,6 @@ body.dark-mode .container {
     transform: translateX(20px);
 }
 
-/* Labels */
 label {
     margin: 10px 0;
 }
@@ -85,7 +85,6 @@ input[type="checkbox"] {
     vertical-align: middle;
 }
 
-/* Paragraph for Displaying Password */
 p {
     margin: 20px 0;
     padding: 10px;
@@ -94,20 +93,18 @@ p {
     text-align: center;
 }
 
-/* Button Group */
 .btn-group {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-/* Button Styles */
 button {
     padding: 12px;
-    background-color: #4CAF50; /* Flat green color */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 8px; /* Softer corners */
+    border-radius: 12px; /* Softer corners */
     cursor: pointer;
     width: 45%;
     box-sizing: border-box;
@@ -115,28 +112,28 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
-    transform: translateY(-2px); /* Lift effect */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 button:active, button:focus {
-    background-color: #388e3c; /* Darker when pressed */
+    background-color: #388e3c;
     outline: none;
 }
 
-/* Segment Options */
 .num-segments {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly; /* Ensure even spacing between options */
     width: 100%;
 }
 
-.num-segments input[type="radio"] {
-    margin: 0 10px;
+.num-segments label {
+    display: flex;
+    align-items: center;
+    margin: 0 15px; /* Add margin to avoid labels crowding */
 }
 
-/* Responsive Typography and Layout */
 @media (max-width: 768px) {
     body {
         font-size: 14px;
@@ -147,7 +144,7 @@ button:active, button:focus {
     }
 
     .btn-group {
-        flex-direction: column; /* Stack buttons on smaller screens */
+        flex-direction: column;
         align-items: center;
     }
 
