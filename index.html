@@ -1,45 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Password Generator</title>
+    <title>CleanPass - Password Generator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="container">
         <!-- Theme Switcher -->
         <div class="theme-switch">
-            <label for="theme-toggle">Dark Mode:</label>
+            <label for="theme-toggle">Dark Mode</label>
             <input type="checkbox" id="theme-toggle">
         </div>
 
-        <!-- Password Generator Options -->
-        <label>Number of segments:</label>
-        <div class="num-segments">
-            <label>
-                <input type="radio" name="num-segments" value="2"> 2
-            </label>
-            <label>
-                <input type="radio" name="num-segments" value="3" checked> 3
-            </label>
-            <label>
-                <input type="radio" name="num-segments" value="4"> 4
-            </label>
+        <h1>CleanPass Generator</h1>
+
+        <!-- Basic Options Section -->
+        <div class="settings-section">
+            <div class="section-title">Basic Options</div>
+            
+            <!-- Number of segments -->
+            <div class="form-group">
+                <label>Number of segments:</label>
+                <div class="num-segments">
+                    <div class="radio-container">
+                        <input type="radio" id="seg-2" name="num-segments" value="2">
+                        <label for="seg-2">2</label>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" id="seg-3" name="num-segments" value="3" checked>
+                        <label for="seg-3">3</label>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" id="seg-4" name="num-segments" value="4">
+                        <label for="seg-4">4</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Special Characters Option -->
+            <div class="form-group">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="special-characters" checked>
+                    <label for="special-characters">Include special characters between segments</label>
+                </div>
+            </div>
+            
+            <!-- Numbers Option -->
+            <div class="form-group">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="include-numbers" checked>
+                    <label for="include-numbers">Include numbers in password</label>
+                </div>
+            </div>
         </div>
-        <label for="special-characters">Include special characters between segments:
-            <input type="checkbox" id="special-characters" checked>
-        </label>
-        <label for="include-numbers">Include numbers in password:
-            <input type="checkbox" id="include-numbers" checked>
-        </label>
+
+        <!-- Advanced Toggle -->
+        <div class="advanced-toggle" id="advanced-toggle">
+            Show Advanced Options ▼
+        </div>
+
+        <!-- Advanced Options Section -->
+        <div class="advanced-options" id="advanced-options">
+            <div class="settings-section">
+                <div class="section-title">Advanced Options</div>
+                
+                <!-- Number Type Selection -->
+                <div class="form-group">
+                    <label for="number-type">Number Type:</label>
+                    <select id="number-type">
+                        <option value="even" selected>Even Numbers Only (2,4,6,8)</option>
+                        <option value="odd">Odd Numbers Only (1,3,5,7,9)</option>
+                        <option value="all">All Numbers (1-9)</option>
+                    </select>
+                </div>
+                
+                <!-- Special Character Selection -->
+                <div class="form-group">
+                    <label for="special-chars-type">Special Character Type:</label>
+                    <select id="special-chars-type">
+                        <option value="at-hash" selected>@ and # only</option>
+                        <option value="punctuation">Punctuation (.,;:)</option>
+                        <option value="brackets">Brackets ([{}])</option>
+                        <option value="all">All Special Characters</option>
+                    </select>
+                </div>
+                
+                <!-- Letter Case Options -->
+                <div class="form-group">
+                    <label>Letter Case Options:</label>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="capital-first" checked>
+                        <label for="capital-first">Capital First Letter</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="vowel-second" checked>
+                        <label for="vowel-second">Vowel as Second Letter</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="consonant-third" checked>
+                        <label for="consonant-third">Consonant as Third Letter</label>
+                    </div>
+                </div>
+                
+                <!-- Ambiguous Characters Exclusion -->
+                <div class="form-group">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="exclude-ambiguous" checked>
+                        <label for="exclude-ambiguous">Exclude ambiguous characters (I, i, l, L, 0, O, o)</label>
+                    </div>
+                </div>
+                
+                <!-- Password Length -->
+                <div class="form-group">
+                    <label for="segment-length">Characters per segment:</label>
+                    <select id="segment-length">
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Display -->
+        <div id="password-display">Your password will be displayed here</div>
 
         <!-- Buttons -->
         <div class="btn-group">
             <button id="generate-btn">Generate Password</button>
             <button id="copy-btn">Copy to Clipboard</button>
         </div>
-
-        <!-- Password Display -->
-        <p id="password-display">Your password will be displayed here</p>
     </div>
 
     <script src="password_generator.js"></script>
