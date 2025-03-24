@@ -10,7 +10,7 @@ body {
     background-color: #f5f7fa; /* Light theme background */
     color: #333333; /* Light theme text color */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition between themes */
-    font-size: 20px; /* Base font size increased */
+    font-size: 16px; /* Adjusted base font size */
 }
 
 body.dark-mode {
@@ -19,28 +19,28 @@ body.dark-mode {
 }
 
 .container {
-    padding: 40px;
+    padding: 30px;
     background-color: #ffffff;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    border-radius: 16px; /* Slightly rounded edges */
-    width: 800px; /* Increased width */
+    border-radius: 12px;
+    width: 700px; /* Adjusted width */
     max-width: 95%;
     transition: all 0.3s ease;
 }
 
 body.dark-mode .container {
     background-color: #252a41; /* Dark theme container background */
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-weight: 600;
     color: #2c3e50;
-    font-size: 36px; /* Increased heading size */
+    font-size: 28px; /* Adjusted heading size */
 }
 
 body.dark-mode h1 {
@@ -53,23 +53,23 @@ body.dark-mode h1 {
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .theme-switch label {
-    margin-right: 15px;
-    font-size: 20px; /* Increased font size */
+    margin-right: 12px;
+    font-size: 16px; /* Adjusted font size */
     font-weight: 500;
 }
 
 .theme-switch input[type="checkbox"] {
     position: relative;
-    width: 70px; /* Increased size */
-    height: 34px; /* Increased size */
+    width: 55px; /* Adjusted size */
+    height: 28px; /* Adjusted size */
     appearance: none;
     background-color: #ddd;
     outline: none;
-    border-radius: 34px;
+    border-radius: 28px;
     transition: background-color 0.3s ease;
     cursor: pointer;
 }
@@ -81,8 +81,8 @@ body.dark-mode h1 {
 .theme-switch input[type="checkbox"]::before {
     content: '';
     position: absolute;
-    width: 28px; /* Increased size */
-    height: 28px; /* Increased size */
+    width: 22px; /* Adjusted size */
+    height: 22px; /* Adjusted size */
     background-color: white;
     border-radius: 50%;
     top: 3px;
@@ -92,29 +92,29 @@ body.dark-mode h1 {
 }
 
 .theme-switch input[type="checkbox"]:checked::before {
-    transform: translateX(36px); /* Adjusted position */
+    transform: translateX(27px); /* Adjusted position */
 }
 
 /* Section Styles */
 .settings-section {
     background-color: #f9f9f9;
-    padding: 25px; /* Increased padding */
-    border-radius: 12px; /* Increased radius */
-    margin-bottom: 30px; /* Increased margin */
-    border-left: 6px solid #4169E1; /* Increased border */
+    padding: 20px; /* Adjusted padding */
+    border-radius: 10px; /* Adjusted radius */
+    margin-bottom: 20px; /* Adjusted margin */
+    border-left: 4px solid #4169E1; /* Adjusted border */
     transition: all 0.3s ease;
 }
 
 body.dark-mode .settings-section {
     background-color: #323a4f;
-    border-left: 6px solid #5d7ae9;
+    border-left: 4px solid #5d7ae9;
 }
 
 .section-title {
     font-weight: 600;
-    margin-bottom: 20px; /* Increased margin */
+    margin-bottom: 15px; /* Adjusted margin */
     color: #2c3e50;
-    font-size: 24px; /* Increased font size */
+    font-size: 20px; /* Adjusted font size */
 }
 
 body.dark-mode .section-title {
@@ -123,47 +123,47 @@ body.dark-mode .section-title {
 
 /* Form Controls */
 .form-group {
-    margin-bottom: 25px; /* Increased margin */
+    margin-bottom: 18px; /* Adjusted margin */
 }
 
 label {
     display: block;
-    margin-bottom: 12px; /* Increased margin */
+    margin-bottom: 8px; /* Adjusted margin */
     font-weight: 500;
-    font-size: 20px; /* Increased font size */
+    font-size: 16px; /* Adjusted font size */
 }
 
 /* Checkbox and Radio Button Styling */
 .checkbox-container, .radio-container {
     display: flex;
     align-items: center;
-    margin-bottom: 15px; /* Increased margin */
+    margin-bottom: 12px; /* Adjusted margin */
 }
 
 .checkbox-container label, .radio-container label {
-    margin: 0 0 0 15px; /* Increased margin */
+    margin: 0 0 0 12px; /* Adjusted margin */
     font-weight: normal;
-    font-size: 20px; /* Increased font size */
+    font-size: 16px; /* Adjusted font size */
 }
 
 input[type="checkbox"], input[type="radio"] {
-    width: 24px; /* Increased size */
-    height: 24px; /* Increased size */
+    width: 20px; /* Adjusted size */
+    height: 20px; /* Adjusted size */
     cursor: pointer;
 }
 
 /* Number Segments Radio Group */
 .num-segments {
     display: flex;
-    gap: 25px; /* Increased gap */
-    margin-bottom: 25px; /* Increased margin */
+    gap: 18px; /* Adjusted gap */
+    margin-bottom: 18px; /* Adjusted margin */
 }
 
 .radio-container {
-    padding: 12px 25px; /* Increased padding */
+    padding: 10px 20px; /* Adjusted padding */
     background-color: #fff;
-    border: 2px solid #ddd; /* Increased border width */
-    border-radius: 10px; /* Increased radius */
+    border: 1px solid #ddd; /* Adjusted border width */
+    border-radius: 8px; /* Adjusted radius */
     transition: all 0.2s ease;
 }
 
@@ -191,18 +191,19 @@ body.dark-mode .radio-container input[type="radio"]:checked + label {
 
 /* Password Display */
 #password-display {
-    font-family: 'Courier New', monospace;
-    font-size: 28px; /* Increased font size */
-    padding: 25px; /* Increased padding */
-    margin: 30px 0; /* Increased margin */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 22px; /* Adjusted font size */
+    padding: 18px; /* Adjusted padding */
+    margin: 20px 0; /* Adjusted margin */
     background-color: #f0f0f0;
-    border: 2px solid #ddd; /* Increased border width */
-    border-radius: 10px; /* Increased radius */
+    border: 1px solid #ddd; /* Adjusted border width */
+    border-radius: 8px; /* Adjusted radius */
     text-align: center;
-    letter-spacing: 2px; /* Increased letter spacing */
+    letter-spacing: 1px; /* Adjusted letter spacing */
     transition: all 0.3s ease;
     overflow-wrap: break-word;
-    min-height: 40px; /* Increased height */
+    min-height: 35px; /* Adjusted height */
+    font-weight: 500; /* Slightly bolder for better readability */
 }
 
 body.dark-mode #password-display {
@@ -216,17 +217,17 @@ body.dark-mode #password-display {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 25px; /* Increased gap */
+    gap: 18px; /* Adjusted gap */
 }
 
 button {
-    padding: 18px 30px; /* Increased padding */
+    padding: 14px 24px; /* Adjusted padding */
     color: white;
     border: none;
-    border-radius: 10px; /* Increased radius */
+    border-radius: 8px; /* Adjusted radius */
     cursor: pointer;
     font-weight: 600;
-    font-size: 22px; /* Increased font size */
+    font-size: 18px; /* Adjusted font size */
     transition: all 0.2s ease;
     flex: 1;
 }
@@ -240,8 +241,8 @@ button {
 }
 
 button:hover {
-    transform: translateY(-3px); /* Increased movement */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Increased shadow */
+    transform: translateY(-2px); /* Adjusted movement */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
 }
 
 #generate-btn:hover {
@@ -254,7 +255,7 @@ button:hover {
 
 button:active {
     transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Increased shadow */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
 }
 
 button:focus {
@@ -263,14 +264,14 @@ button:focus {
 
 /* Advanced Options Toggle */
 .advanced-toggle {
-    margin: 30px 0 15px; /* Increased margin */
+    margin: 20px 0 10px; /* Adjusted margin */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #4169E1;
     font-weight: 500;
-    font-size: 22px; /* Increased font size */
+    font-size: 18px; /* Adjusted font size */
 }
 
 .advanced-toggle:hover {
@@ -288,22 +289,22 @@ body.dark-mode .advanced-toggle {
 }
 
 .advanced-options.show {
-    max-height: 1000px; /* Increased max height */
+    max-height: 800px; /* Adjusted max height */
 }
 
 /* Custom Select Styles */
 select {
     width: 100%;
-    padding: 15px; /* Increased padding */
-    border: 2px solid #ddd; /* Increased border width */
-    border-radius: 10px; /* Increased radius */
+    padding: 12px; /* Adjusted padding */
+    border: 1px solid #ddd; /* Adjusted border width */
+    border-radius: 8px; /* Adjusted radius */
     background-color: white;
     cursor: pointer;
     appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 15px top 50%; /* Adjusted position */
-    font-size: 20px; /* Increased font size */
+    background-position: right 12px top 50%; /* Adjusted position */
+    font-size: 16px; /* Adjusted font size */
 }
 
 body.dark-mode select {
@@ -314,15 +315,15 @@ body.dark-mode select {
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .container {
         width: 95%;
-        padding: 30px;
+        padding: 25px;
     }
 
     .num-segments {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
 
     .btn-group {
@@ -330,33 +331,33 @@ body.dark-mode select {
     }
 
     #password-display {
-        font-size: 22px;
+        font-size: 20px;
     }
     
     body {
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 20px;
+        padding: 18px;
     }
     
     .settings-section {
-        padding: 15px;
+        padding: 12px;
     }
     
     h1 {
-        font-size: 28px;
+        font-size: 24px;
     }
     
     .section-title {
-        font-size: 22px;
+        font-size: 18px;
     }
     
     button {
-        font-size: 18px;
-        padding: 15px 25px;
+        font-size: 16px;
+        padding: 12px 20px;
     }
 }
